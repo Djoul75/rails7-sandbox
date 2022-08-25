@@ -4,42 +4,52 @@ import ReactDOM from 'react-dom'
 const QuestionList = () => {
   const questionsList = [
     {
+      id: 1,
       title: 'How to check if a key is present in a hash?',
       tag: 'Ruby'
     },
     {
+      id: 2,
       title: 'What is the difference between strings and symbol?',
       tag: 'Ruby'
     },
     {
+      id: 3,
       title: 'What happened if you add two same keys in hash?',
       tag: 'Ruby'
     },
     {
+      id: 4,
       title: 'How to delete a given key from hash?',
       tag: 'Ruby'
     },
     {
+      id: 5,
       title: 'How to check if two hashes are identical?',
       tag: 'Ruby'
     },
     {
+      id: 6,
       title: 'How to combine two hashes in Ruby?',
       tag: 'Ruby'
     },
     {
+      id: 7,
       title: 'How to get unique keys from two hashes in Ruby?',
       tag: 'Ruby'
     },
     {
+      id: 8,
       title: 'What does the has_key?, key?, member?, and include? methods in a hash?',
       tag: 'Ruby'
     },
     {
+      id: 9,
       title: 'What are blocks in Ruby?',
       tag: 'Ruby'
     },
     {
+      id: 10,
       title: 'Does the order of keys matters to compare two hashes in Ruby?',
       tag: 'Ruby'
     },
@@ -48,8 +58,8 @@ const QuestionList = () => {
   return(
     <div className='row'>
       <div className="col-lg-10 mx-auto">
-        {questionsList.map((question, index) =>
-          <div className="card rouded-0 mt-3" key={index}>
+        {questionsList.map((question) =>
+          <div className="card rouded-0 mt-3" key={question.id}>
             <div className="card-body">
               <h3 className="card-title">{question.title}</h3>
               <p className="lead">
