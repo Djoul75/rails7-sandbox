@@ -1,5 +1,5 @@
 class Api::V1::QuestionsController < ApplicationController
-  protect_from_forgery with: :null_session
+  # protect_from_forgery with: :null_session
 
   def index
     @questions = Question.all
@@ -11,7 +11,7 @@ class Api::V1::QuestionsController < ApplicationController
     if params[:count_for] == 'like'
       @question.update(likes_count: @question.likes_count + 1)
     elsif params[:count_for] == 'dislike'
-      @question.update(likes_count: @question.dislikes_count + 1)
+      @question.update(dislikes_count: @question.dislikes_count + 1)
     end
     render json: @question, status: :ok
   end
