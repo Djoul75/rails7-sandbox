@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 import QuestionDetail from './question_detail'
 import EmptyQuestionMessage from './empty_question_message'
 import Loader from './loader'
+import NewQuestion from './new_question'
 
 const QuestionList = () => {
 
@@ -63,6 +64,9 @@ const QuestionList = () => {
     <div className='row'>
       <div className="col-lg-10 mx-auto">
         <p className="lead fw-bold">Fileter Questions by Tags</p>
+        <button type="button" className="btn btn-primary mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Contrinute your question
+        </button>
         <select className="form-select form-select-lg" value={selectedOption} onChange={event => updateSelectedItem(event)}>
           {questionsTags.map(tag => (
             <option key={tag.value} value={tag.value}>{tag.label}</option>
@@ -75,6 +79,7 @@ const QuestionList = () => {
         }
         { isShowAlert && <EmptyQuestionMessage tagname={questionsTags[selectedOption].label}/> }
       </div>
+      <NewQuestion />
     </div>
   )
 }
