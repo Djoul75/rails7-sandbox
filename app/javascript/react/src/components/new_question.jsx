@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { useState, useEffect } from 'react'
+import ServerSideError from './server_side_error'
 
 const NewQuestion = () => {
   const questionsTags = [
@@ -22,6 +23,9 @@ const NewQuestion = () => {
   // const handleTagChange = (event) => {
     // setTag(event.target.value)
   // }
+
+  const [isServerSideError, setIsServerSideError] = useState(false)
+  const [serverError, setServerError] = useState([])
 
   const [formField, setFormField] = useState({
     title: '',
@@ -50,6 +54,13 @@ const NewQuestion = () => {
     .then((response) => response.json())
     .then((data) => {
       console.log('Success: ', data);
+      if (data['status'] == "failure") {
+        setIsServerSideError(true)
+        setServerError(data['data'])
+      } else {
+        setIsServerSideError(false)
+        setServerError([])
+      }
     })
     .catch((error) => {
       console.log('Error: ', error);
@@ -66,6 +77,7 @@ const NewQuestion = () => {
           </div>
           <form onSubmit={handleQuestionSubmit}>
             <div className="modal-body">
+              { isServerSideError && <ServerSideError errors={serverError}/> }
               <div className="form-group">
                 <label className="form-label mt-3 mb-3">Title</label>
                 <input type="text"

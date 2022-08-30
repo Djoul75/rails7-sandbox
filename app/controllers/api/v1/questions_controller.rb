@@ -1,5 +1,5 @@
 class Api::V1::QuestionsController < ApplicationController
-  # protect_from_forgery with: :null_session
+  protect_from_forgery with: :null_session
 
   def index
     if params[:tags].present? && params[:tags] != 'All'
